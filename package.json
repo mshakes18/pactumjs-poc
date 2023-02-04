@@ -1,0 +1,14 @@
+{
+  "name": "pactumjs-poc",
+  "version": "1.0.0",
+  "description": "api testing",
+  "main": "restful-booker-test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.4.1"
+  }
+}
