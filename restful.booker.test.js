@@ -10,7 +10,7 @@ it('should login to the system', async()=>{
   })
   .expectStatus(200)
   .expectJson("token") 
-  .returns('res.headers');
+  // .returns('res.headers');
 })
 
 
