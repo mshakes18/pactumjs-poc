@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "jest": "^29.4.1"
+  },
+  "devDependencies": {
+    "pactum": "^3.3.2"
   }
 }
