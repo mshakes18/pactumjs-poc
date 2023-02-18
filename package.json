@@ -12,6 +12,7 @@
     "jest": "^29.4.1"
   },
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "pactum": "^3.3.2"
   }
 }
