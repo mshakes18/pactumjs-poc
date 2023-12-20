@@ -1,11 +1,19 @@
-const { spec, response } = require("pactum");
+import { spec, response } from "pactum";
 require("dotenv").config();
-const API_KEY = process.env.RAWG_K;
+const API_KEY = process.env.RAWG_K!;
+import { details } from "./types";
 
 it.skip("should return response with status of 200", async () => {
+  // const apiURL: string = "https://api.rawg.io/api/games?key=";
+
+  const testDetails: details = {
+    apiURL: "https://api.rawg.io/api/games?key=",
+    API_KEY: process.env.RAWG_K!,
+    statuscode: 200,
+  };
   await spec()
-    .get("https://api.rawg.io/api/games?key=" + API_KEY)
-    .expectStatus(200)
+    .get(testDetails.apiURL + testDetails.API_KEY)
+    .expectStatus(testDetails.statuscode)
     .inspect();
 });
 
@@ -20,7 +28,7 @@ it.skip("it should return response with status of 401 Unauthorized", async () =>
 });
 
 it("should get a game series", async () => {
-  await spec()
+  const gameSeries = await spec()
     .get("https://api.rawg.io/api/games")
     .withQueryParams("key", API_KEY)
     .withQueryParams("search", "Gran turismo")
@@ -29,9 +37,9 @@ it("should get a game series", async () => {
     .withQueryParams("search_exact", true)
     .expectStatus(200)
     .expectJsonLike({ count: 3 })
-    .inspect()
-    .toss();
-  const gameName = response.body;
+    .inspect();
+  // .toss();
+  const gameName = gameSeries.body.results[0].name;
   console.log(gameName);
 });
 

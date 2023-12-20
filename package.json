@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "description": "api testing",
   "main": "restful-booker-test.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "jest": "^29.4.1"
-  },
   "devDependencies": {
+    "@types/jest": "^29.5.11",
     "dotenv": "^16.0.3",
-    "pactum": "^3.3.2"
+    "jest": "^29.4.1",
+    "pactum": "^3.3.2",
+    "typescript": "^5.3.3"
   }
 }
