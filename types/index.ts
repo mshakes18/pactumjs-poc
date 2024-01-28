@@ -1,13 +1,17 @@
-export type statusOktype = {
+export enum statusCode {
+  ok = 200,
+  fail = 401,
+}
+
+export type testResponseType = {
   apiURL: string;
-  API_KEY: string;
-  statuscode: number;
+  statuscode: statusCode.ok | statusCode.fail;
+  API_KEY?: string;
+  randomParam?: string;
 };
 
-export type statusUnauthorizedType = {
-  apiURL: string;
+export type randomParam = {
   randomParam: string;
-  statuscode: number;
 };
 
 export type gameSeriesOk = {

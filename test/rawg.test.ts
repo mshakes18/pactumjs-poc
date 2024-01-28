@@ -2,35 +2,36 @@ import { spec, response } from "pactum";
 require("dotenv").config();
 const API_KEY = process.env.RAWG_K;
 import {
-  statusOktype,
-  statusUnauthorizedType,
+  testResponseType,
+  statusCode,
+  randomParam,
   gameSeriesOk,
   specificGamesSeries,
   specificGamesStudio,
 } from "../types";
 
 it("should return response with status of 200", async () => {
-  const apiData: statusOktype = {
+  const apiData: testResponseType = {
     apiURL: "https://api.rawg.io/api/games?key=",
     API_KEY: process.env.RAWG_K!,
-    statuscode: 200,
+    statuscode: statusCode.ok,
   };
   await spec()
     .get(apiData.apiURL + apiData.API_KEY)
-    .expectStatus(apiData.statuscode)
+    .expectStatus(statusCode.ok)
     .inspect();
 });
 
 it("it should return response with status of 401 Unauthorized", async () => {
-  const apiData: statusUnauthorizedType = {
+  const apiData: testResponseType = {
     apiURL: "https://api.rawg.io/api/games?key=",
     randomParam: "sdhjshdshj",
-    statuscode: 401,
+    statuscode: statusCode.fail,
   };
 
   await spec()
     .get(apiData.apiURL + apiData.randomParam)
-    .expectStatus(apiData.statuscode)
+    .expectStatus(statusCode.fail)
     .expectJsonLike({
       error: "The API key is not found",
     })
@@ -42,7 +43,7 @@ it("should get a game series", async () => {
     apiURL: "https://api.rawg.io/api/games?key=",
     API_KEY: process.env.RAWG_K!,
     gameName: "Gran turismo",
-    statuscode: 200,
+    statuscode: statusCode.ok,
     platform: 18,
     searchPrecise: true,
     searchExact: true,
@@ -67,7 +68,7 @@ it("should get god of war ragnarok", async () => {
     apiURL: "https://api.rawg.io/api/games?key=",
     API_KEY: process.env.RAWG_K!,
     gameName: "God of War",
-    statuscode: 200,
+    statuscode: statusCode.ok,
     platform: 187,
     searchPrecise: true,
     searchExact: true,
@@ -82,7 +83,7 @@ it("should get god of war ragnarok", async () => {
     .withQueryParams("search_precise", apiData.searchPrecise)
     .withQueryParams("search_exact", apiData.searchExact)
     .withQueryParams("dates", apiData.dates)
-    .expectStatus(200)
+    .expectStatus(statusCode.ok)
     .expectJsonLike({ count: apiData.count })
     .inspect();
 });
@@ -92,7 +93,7 @@ it("should get all games by santa monica studios", async () => {
     apiURL: "https://api.rawg.io/api/games?key=",
     API_KEY: process.env.RAWG_K!,
     studio: "sce-santa-monica-studio",
-    statusCode: 200,
+    statusCode: statusCode.ok,
     searchPrecise: true,
     searchExact: true,
   };
@@ -103,6 +104,6 @@ it("should get all games by santa monica studios", async () => {
     .withQueryParams("key", apiData.API_KEY)
     .withQueryParams("search_precise", apiData.searchPrecise)
     .withQueryParams("search_exact", apiData.searchExact)
-    .expectStatus(apiData.statusCode)
+    .expectStatus(statusCode.ok)
     .inspect();
 });
