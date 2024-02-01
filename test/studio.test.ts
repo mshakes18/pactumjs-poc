@@ -1,21 +1,14 @@
 import { spec, response } from "pactum";
 require("dotenv").config();
 const API_KEY = process.env.RAWG_K;
-import {
-  testResponseType,
-  statusCode,
-  randomParam,
-  gameSeriesOk,
-  specificGamesSeries,
-  specificGamesStudio,
-} from "../types";
+import { baseType, statusCode, specificGamesStudio } from "../types";
 
 it("should get all games by santa monica studios", async () => {
-  const apiData: specificGamesStudio = {
+  const apiData: specificGamesStudio & baseType = {
     apiURL: "https://api.rawg.io/api/games?key=",
     API_KEY: process.env.RAWG_K!,
     studio: "sce-santa-monica-studio",
-    statusCode: statusCode.ok,
+    statuscode: statusCode.ok,
     searchPrecise: true,
     searchExact: true,
   };

@@ -3,21 +3,17 @@ export enum statusCode {
   fail = 401,
 }
 
-export type testResponseType = {
+export type baseType = {
   apiURL: string;
-  statuscode: statusCode.ok | statusCode.fail;
   API_KEY?: string;
-  randomParam?: string;
+  statuscode: statusCode.ok | statusCode.fail;
 };
 
 export type randomParam = {
   randomParam: string;
 };
 
-export type gameSeriesOk = {
-  apiURL: string;
-  API_KEY: string;
-  statuscode: number;
+export type gameSeriesOk = baseType & {
   gameName: string;
   platform: number;
   searchPrecise: boolean;
@@ -25,10 +21,7 @@ export type gameSeriesOk = {
   count: number;
 };
 
-export type specificGamesSeries = {
-  apiURL: string;
-  API_KEY: string;
-  statuscode: number;
+export type specificGamesSeries = baseType & {
   gameName: string;
   platform: number;
   searchPrecise: boolean;
@@ -37,10 +30,7 @@ export type specificGamesSeries = {
   dates: string;
 };
 
-export type specificGamesStudio = {
-  apiURL: string;
-  API_KEY: string;
-  statusCode: number;
+export type specificGamesStudio = baseType & {
   studio: string;
   searchPrecise: boolean;
   searchExact: boolean;

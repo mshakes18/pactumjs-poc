@@ -2,7 +2,7 @@ import { spec, response } from "pactum";
 require("dotenv").config();
 const API_KEY = process.env.RAWG_K;
 import {
-  testResponseType,
+  baseType,
   statusCode,
   randomParam,
   gameSeriesOk,
@@ -11,7 +11,7 @@ import {
 } from "../types";
 
 it("it should return response with status of 401 Unauthorized", async () => {
-  const apiData: testResponseType = {
+  const apiData: baseType & randomParam = {
     apiURL: "https://api.rawg.io/api/games?key=",
     randomParam: "sdhjshdshj",
     statuscode: statusCode.fail,
