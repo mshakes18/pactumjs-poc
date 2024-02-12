@@ -2,9 +2,18 @@ name: RAWG API TESTS
 on: [push]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
-
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -14,5 +23,3 @@ jobs:
       - run: echo "RAWG_K = ${{secrets.RAWG_K}}" >> .env
       - run: npm install
       - run: npm test
-        # env:
-        #   API_KEY: ${{secrets.RAWG_K}}
