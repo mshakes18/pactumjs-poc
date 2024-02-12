@@ -1,6 +1,5 @@
-import { spec, response } from "pactum";
-require("dotenv").config();
-const API_KEY = process.env.RAWG_K;
+import { spec } from "pactum";
+
 import { baseType, statusCode, specificGamesStudio } from "../types";
 
 it("should get all games by santa monica studios", async () => {
