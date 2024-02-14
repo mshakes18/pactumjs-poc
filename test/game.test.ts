@@ -1,6 +1,7 @@
 import { spec } from "pactum";
-
 import { baseType, statusCode, specificGamesSeries } from "../types";
+import "dotenv/config";
+// require("dotenv").config();
 
 it("should get god of war ragnarok", async () => {
   const apiData: specificGamesSeries & baseType = {

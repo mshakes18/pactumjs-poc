@@ -2,6 +2,8 @@ import { spec } from "pactum";
 
 import { baseType, statusCode } from "../types";
 
+import "dotenv/config";
+
 it("should return response with status of 200", async () => {
   const apiData: baseType = {
     apiURL: "https://api.rawg.io/api/games?key=",
