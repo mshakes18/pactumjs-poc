@@ -2,6 +2,8 @@ import { spec } from "pactum";
 
 import { baseType, statusCode, specificGamesStudio } from "../types";
 
+import "dotenv/config";
+
 it("should get all games by santa monica studios", async () => {
   const apiData: specificGamesStudio & baseType = {
     apiURL: "https://api.rawg.io/api/games?key=",
