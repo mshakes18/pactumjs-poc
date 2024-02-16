@@ -15,5 +15,3 @@ it("should return response with status of 200", async () => {
     .expectStatus(statusCode.ok)
     .inspect();
 });
-
-// check

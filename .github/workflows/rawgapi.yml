@@ -2,7 +2,7 @@ name: RAWG API TESTS
 on: [push, pull_request]
 
 jobs:
-  lint:
+  lint_code:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
