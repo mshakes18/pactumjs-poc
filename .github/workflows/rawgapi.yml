@@ -2,7 +2,7 @@ name: RAWG API TESTS
 on: [push, pull_request]
 
 jobs:
-  lint:
+  lint_code:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -13,7 +13,7 @@ jobs:
           node-version: "20.x"
       - run: npm install
       - run: npm run lint
-  build:
+  api_tests:
     needs: lint
     runs-on: ubuntu-latest
     steps:
