@@ -4,7 +4,7 @@ import { statusCode, gameSeriesOk, baseType } from "../types";
 
 import "dotenv/config";
 
-it("should get a game series", async () => {
+it("should get a game series gran turismo", async () => {
   const apiData: gameSeriesOk & baseType = {
     apiURL: "https://api.rawg.io/api/games?key=",
     API_KEY: process.env.RAWG_K!,
