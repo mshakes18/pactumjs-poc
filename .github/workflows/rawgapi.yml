@@ -1,5 +1,7 @@
 name: RAWG API TESTS
 on: [push, pull_request, workflow_dispatch]
+env:
+  API_KEY: ${{secrets.API_KEY}}
 jobs:
   lint_code:
     runs-on: ubuntu-latest
